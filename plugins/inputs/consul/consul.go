@@ -98,10 +98,10 @@ func (c *Consul) GatherHealthCheck(acc telegraf.Accumulator, checks []*api.Healt
 		record["check_id"] = check.CheckID
 		record["check_name"] = check.Name
 		record["service_id"] = check.ServiceID
-		record["status"] = check.Status
 
 		tags["node"] = check.Node
 		tags["service_name"] = check.ServiceName
+		tags["status"] = check.Status
 
 		acc.AddFields("consul_health_checks", record, tags)
 	}
